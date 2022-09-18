@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.mancj.materialsearchbar.MaterialSearchBar
+                android:id="@+id/searchBar"
+                style="@style/MaterialSearchBarLight"
+                android:layout_width="339dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@color/purple_500"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:padding="5dp"
+                app:mt_hint="Search your favorite product"
+                app:mt_maxSuggestionsCount="10"
+                app:mt_placeholder="Market INIK"
+                app:mt_speechMode="true"
+                app:mt_textColor="@color/purple_200" />
+
+            <ImageView
+                android:id="@+id/sort"
+                android:layout_width="53dp"
+                android:layout_height="54dp"
+                android:layout_marginStart="340dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_baseline_sort_24" />
+
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/image_slider"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginTop="60dp"
+                app:iss_auto_cycle="true"
+                app:iss_period="1000"
+                app:iss_delay="0"/>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/idcategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="210dp"
+            android:text="Categories"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+
+        <TextView
+            android:id="@+id/productspostid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="390dp"
+            android:text="Products"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idCourseRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="420dp" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvcategory"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="255dp" />
+
+
+</RelativeLayout>
