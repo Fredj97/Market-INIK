@@ -5,6 +5,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".ParseApplication"
@@ -18,8 +20,12 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
-            android:name=".RegisterActivity"
+            android:name=".MyStores"
             android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBmK8Bf5-sFlssElKV-1ThpyV8rieU7i2w" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -32,8 +38,8 @@
         </provider>
 
         <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
+            android:name=".RegisterActivity"
+            android:exported="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -50,6 +56,14 @@
         <activity
             android:name=".FavoriteActivity"
             android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UsersActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".MenuUsersActivity" />
+        <activity android:name=".MenuStoresActivity" />
     </application>
 
 </manifest>

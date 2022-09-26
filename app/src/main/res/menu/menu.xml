@@ -18,7 +18,7 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_basket"
-        android:icon="@drawable/ic_baseline_shopping_basket_24"
+        android:icon="@drawable/ic_baseline_search_24"
         android:title="Basket"
         app:showAsAction="always" />
 

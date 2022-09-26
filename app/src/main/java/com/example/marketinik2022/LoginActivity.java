@@ -76,33 +76,10 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                SinUp(username, password);
 
-            }
 
-            private void SinUp(String username, String password) {
 
-                ParseUser user = new ParseUser();
-                user.setUsername(username);
-                user.setPassword(password);
-                user.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e != null) {
-                            Log.e(TAG, "Issue with Signup", e);
-                            return;
-                        }
-                        goMainActivity();
-                    }
-                });
-            }
 
-        });
     }
 
 

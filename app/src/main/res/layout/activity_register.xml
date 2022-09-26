@@ -60,6 +60,13 @@
             android:hint="password"
             android:id="@+id/etPassword"
             android:inputType="textPassword" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:drawableRight="@drawable/key"
+            android:hint="Confirm password"
+            android:id="@+id/etPassword1"
+            android:inputType="textPassword" />
 
 
     </LinearLayout>

@@ -43,28 +43,29 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:background="#A4A7A8"
-            app:menu="@menu/menu_item"
-            app:headerLayout="@layout/drawer_header"/>
+            app:headerLayout="@layout/drawer_header"
+            app:menu="@menu/menu_item" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
 
-        <com.mancj.materialsearchbar.MaterialSearchBar
-            android:id="@+id/searchBar"
-            style="@style/MaterialSearchBarLight"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:background="@color/purple_500"
-            android:backgroundTint="@color/white"
-            android:padding="5dp"
-            app:mt_hint="Search your favorite product"
-            app:mt_maxSuggestionsCount="10"
-            app:mt_placeholder="Market INIK"
-            app:mt_speechMode="true"
-            app:mt_textColor="@color/purple_200"
-            tools:ignore="MissingClass" />
+            <com.mancj.materialsearchbar.MaterialSearchBar
+                android:id="@+id/searchBar"
+                style="@style/MaterialSearchBarLight"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp"
+                android:background="@color/purple_500"
+                android:backgroundTint="@color/white"
+                android:padding="5dp"
+                app:mt_hint="Search your favorite product"
+                app:mt_maxSuggestionsCount="10"
+                app:mt_placeholder="Market INIK"
+                app:mt_speechMode="true"
+                app:mt_textColor="@color/purple_200"
+                tools:ignore="MissingClass" />
 
             <ImageView
                 android:id="@+id/sort"
@@ -76,10 +77,7 @@
 
 
         </RelativeLayout>
-        <org.imaginativeworld.whynotimagecarousel.ImageCarousel
-            android:id="@+id/carousel"
-            android:layout_width="match_parent"
-            android:layout_height="256dp" />
+
         <TextView
             android:id="@+id/idcategory"
             android:layout_width="wrap_content"
@@ -113,7 +111,6 @@
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:layout_marginTop="225dp" />
-
 
 
     </androidx.drawerlayout.widget.DrawerLayout>
