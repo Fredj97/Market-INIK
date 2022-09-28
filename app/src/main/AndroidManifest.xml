@@ -64,6 +64,7 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".MenuUsersActivity" />
         <activity android:name=".MenuStoresActivity" />
+
     </application>
 
 </manifest>

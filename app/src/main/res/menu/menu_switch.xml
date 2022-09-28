@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/switchitem"
+        android:icon="@drawable/ic_baseline_switch_right_24"
+        android:title="Go to your business"
+        app:showAsAction="always"
+        android:checked="true"/>
+
+
+
+
+
+</menu>

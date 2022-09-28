@@ -4,23 +4,30 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.slider.Slider;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import Models.Stores;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,14 +44,13 @@ public class MainActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     //private FragmentTransaction fragmentTransaction;
     private View recyclerView;
-
+    Slider imageList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Initialize and assign variable
-
 // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,32 +103,61 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
     }
+
         private ActionBarDrawerToggle setupDrawerToggle() {
             // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
             // and will not render the hamburger icon without it.
             return new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open,  R.string.drawer_close);
         }
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // The action bar home/up action should open or close the drawer.
-            switch (item.getItemId()) {
-
-                case android.R.id.home:
-                    mDrawer.openDrawer(GravityCompat.START);
-                    return true;
-
-
-
-            }
-            return super.onOptionsItemSelected(item);
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_switch,menu);
+        return true;
 
     }
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            if (item.getItemId() == R.id.switchitem) {
+                ParseQuery<Stores> query = ParseQuery.getQuery(Stores.class);
+                query.include(Stores.KEY_STATUS);
+                query.findInBackground(new FindCallback<Stores>() {
+                    @Override
+                    public void done(List<Stores> stores, ParseException e) {
+                        for (Stores store : stores) {
+                            if (e == null) {
+                                if (store.getStatus().equals(true)) {
+                                    showAlert("Seller ", "Welcome to your business" + store.getStatus());
+                                    Intent intent = new Intent(MainActivity.this, MyStores.class);
+
+                                    startActivity(intent);
+                                } else {
+                                    showAlert("Seller", "Sorry");
+
+                                }
+                            }
+                        }
+
+                    }
+                });
+            }
+                // The action bar home/up action should open or close the drawer.
+             //   switch (item.getItemId()) {
+
+                   // case android.R.id.home:
+                      //  mDrawer.openDrawer(GravityCompat.START);
 
 
 
 
+
+                return super.onOptionsItemSelected(item);
+
+            }
+
+    private void showAlert(String title, String message) {
+    }
 
     private void setupDrawerContent(NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(

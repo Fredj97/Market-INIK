@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DAE1E3"
     tools:context=".MainActivity">
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -25,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:background="#0ECBE3"
                 android:backgroundTint="#10D7F1" />
+
 
             <!-- The main content view where fragments are loaded -->
             <FrameLayout
@@ -54,36 +56,37 @@
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchBar"
                 style="@style/MaterialSearchBarLight"
-                android:layout_width="330dp"
+                android:layout_width="370dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="80dp"
                 android:background="@color/purple_500"
-                android:backgroundTint="@color/white"
-                android:padding="5dp"
+                android:backgroundTint="#DAE1E3"
+                android:padding="0dp"
                 app:mt_hint="Search your favorite product"
                 app:mt_maxSuggestionsCount="10"
                 app:mt_placeholder="Market INIK"
+                app:mt_roundedSearchBarEnabled="true"
                 app:mt_speechMode="true"
                 app:mt_textColor="@color/purple_200"
                 tools:ignore="MissingClass" />
 
-            <ImageView
-                android:id="@+id/sort"
-                android:layout_width="53dp"
-                android:layout_height="54dp"
-                android:layout_marginStart="340dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/ic_baseline_sort_24" />
+
+
+
 
 
         </RelativeLayout>
+
+
+
 
         <TextView
             android:id="@+id/idcategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="190dp"
+            android:layout_marginTop="270dp"
             android:text="Categories"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -102,15 +105,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idCourseRV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="380dp" />
+            android:layout_height="120dp"
+            android:layout_marginTop="450dp" />
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvcategory"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginTop="225dp" />
+            android:layout_height="20dp"
+            android:layout_marginTop="275dp" />
 
 
     </androidx.drawerlayout.widget.DrawerLayout>
@@ -123,6 +126,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:backgroundTint="#4DA2B8"
-        app:backgroundTint="#00BCD4"
+        app:backgroundTint="#FFFFFF"
         app:menu="@menu/menu" />
+
+
 </RelativeLayout>
