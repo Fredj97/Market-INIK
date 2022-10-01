@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -76,11 +74,37 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username=etUsername.getText().toString();
+                String password=etPassword.getText().toString();
+                SignUp(username,password);
+
+            }
+        private void SignUp(String username, String password) {
+
+            ParseUser user = new ParseUser();
+            user.setUsername(username);
+            user.setPassword(password);
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if(e!=null){
+                        Log.e(TAG, "Issue with Signup",e);
+                        return;
+                    }
+                    goMainActivity();
+                }
+            });
+        }
+
+    });
+}
 
 
 
 
-    }
 
 
     private void goMainActivity() {

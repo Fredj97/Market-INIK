@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/alcont">
+
+     <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        tools:text="Fredjs" />
+
+       <ImageView
+           android:id="@+id/ivImage"
+           android:layout_width="165dp"
+           android:layout_height="184dp"
+           android:layout_below="@+id/tvUsername"
+           android:scaleType="fitCenter"
+           tools:srcCompat="@tools:sample/avatars" />
+
+
+       <LinearLayout
+           android:id="@+id/select"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/ivImage"
+           android:orientation="horizontal">
+
+
+
+
+
+
+       </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:id="@+id/desc"
+            android:layout_below="@+id/select">
+
+
+             <TextView
+
+                 android:id="@+id/tvDescription"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_margin="10dp"
+                 android:hint="Nom du produit" />
+
+
+         </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/desc">
+
+           <TextView
+
+               android:id="@+id/tvprice"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_margin="10dp"
+               android:hint="ajouter le prix" />
+
+       </LinearLayout>
+
+
+
+   </RelativeLayout>
+
+
+
+</RelativeLayout>

@@ -1,8 +1,5 @@
 package com.example.marketinik2022;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -12,8 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.parse.ParseUser;
 
 public class FavoriteActivity extends AppCompatActivity {
 
@@ -22,21 +21,7 @@ public class FavoriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        final Button button_users_activity = findViewById(R.id.button_users_activity);
-        button_users_activity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                final ProgressDialog dlg = new ProgressDialog(FavoriteActivity.this);
-                dlg.setTitle("Please, wait a moment.");
-                dlg.setMessage("Opening Menu...");
-                dlg.show();
-
-                Intent intent = new Intent(FavoriteActivity.this, MenuUsersActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
 
         final Button button_stores_activity = findViewById(R.id.button_stores_activity);
         button_stores_activity.setOnClickListener(new View.OnClickListener() {
@@ -56,15 +41,7 @@ public class FavoriteActivity extends AppCompatActivity {
             }
         });
 
-        final Button logout_button = findViewById(R.id.logout_button);
-        logout_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // logging out of Parse
-                ParseUser.logOut();
-                alertDisplayer("So, you're going...", "Ok...Bye-bye then");
-            }
-        });
+
 
         // Initialize and assign variable
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
@@ -87,10 +64,7 @@ public class FavoriteActivity extends AppCompatActivity {
 
                     case R.id.action_favorite:
                         return true;
-                    case R.id.action_basket:
-                        startActivity(new Intent(getApplicationContext(),BasketActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+
                     case R.id.action_profile:
                         startActivity(new Intent(getApplicationContext(),SettingsActivity.class));
                         overridePendingTransition(0,0);

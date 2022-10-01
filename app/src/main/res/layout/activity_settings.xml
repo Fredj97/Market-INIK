@@ -7,13 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_gravity="start"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="550dp"
+        android:padding="15dp"
+        android:text="Logout"
+        android:backgroundTint="@color/teal_700"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+
+        />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -22,7 +29,6 @@
         android:layout_alignParentBottom="true"
         app:itemBackground="@color/teal_700"
         app:itemIconTint="@drawable/selector"
-        app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu" />
 
 </RelativeLayout>

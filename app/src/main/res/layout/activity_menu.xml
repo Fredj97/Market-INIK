@@ -13,30 +13,8 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:text="Logout"
-            android:textColor="@android:color/black"
-            android:textSize="12sp"
 
-            />
 
-        <Button
-            android:id="@+id/button_users_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="#0000bf"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:text="Users Activity"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:textColor="@android:color/white"
-
-            />
 
         <Button
             android:id="@+id/button_stores_activity"
@@ -46,7 +24,7 @@
             android:background="#4B8A08"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:text="Stores Activity"
+            android:text="Sellers Activity"
             android:layout_gravity="center_vertical|center_horizontal"
             android:textColor="@android:color/white"
 

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".ParseApplication"
@@ -19,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".AddProductActivity"
+            android:exported="false" />
         <activity
             android:name=".MyStores"
             android:exported="false" />
@@ -38,9 +42,6 @@
         </provider>
 
         <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
@@ -51,9 +52,6 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".BasketActivity"
-            android:exported="false" />
-        <activity
             android:name=".FavoriteActivity"
             android:exported="false" />
         <activity
@@ -62,9 +60,7 @@
         <activity
             android:name=".UsersActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".MenuUsersActivity" />
         <activity android:name=".MenuStoresActivity" />
-
     </application>
 
 </manifest>

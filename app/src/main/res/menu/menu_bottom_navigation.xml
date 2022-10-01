@@ -2,30 +2,18 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
-
-
-    <item
-        android:id="@+id/action_favorite"
-        android:icon="@drawable/ic_baseline_location_searching_24"
-        android:title="Location"
-        app:showAsAction="always" />
-
-
-
-
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"
         app:showAsAction="always" />
-
     <item
-        android:id="@+id/action_profile"
-        android:icon="@drawable/ic_baseline_account_circle_24"
-        android:title="Profile"
+        android:id="@+id/action_compose"
+        android:icon="@drawable/ic_baseline_add_photo_alternate_24"
+        android:title="Take Picture"
         app:showAsAction="always" />
+
+
 
 
 </menu>

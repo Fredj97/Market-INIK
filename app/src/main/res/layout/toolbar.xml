@@ -10,8 +10,8 @@
         android:id="@+id/toolbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
-        android:background="#DAE1E3"
+        android:layout_marginTop="25dp"
+        android:background="#00BCD4"
         >
 
 <ImageView

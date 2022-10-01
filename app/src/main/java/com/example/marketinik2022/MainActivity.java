@@ -1,15 +1,8 @@
 package com.example.marketinik2022;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,16 +10,31 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.marketinik2022.Adapters.PostAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.slider.Slider;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import Models.Post;
 import Models.Stores;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,11 +53,27 @@ public class MainActivity extends AppCompatActivity {
     //private FragmentTransaction fragmentTransaction;
     private View recyclerView;
     Slider imageList;
+    private RecyclerView rvPosts;
+    protected PostAdapter adapter;
+    protected List<Post> allPosts;
+    Boolean mFirstLoad;
+    private MaterialSearchBar searchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        searchBar=findViewById(R.id.searchBar);
+        rvPosts = findViewById(R.id.rvPosts);
+        allPosts = new ArrayList<>();
+        adapter = new PostAdapter(MainActivity.this, allPosts);
+        mFirstLoad=true;
+        rvPosts.setAdapter(adapter);
+        rvPosts.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        queryPosts();
+        //queryPosts1();
         // Initialize and assign variable
 // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -90,10 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.action_home:
                         return true;
-                    case R.id.action_basket:
-                        startActivity(new Intent(getApplicationContext(), BasketActivity.class));
-                        overridePendingTransition(0, 0);
-                        return true;
+
 
                     case R.id.action_profile:
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
@@ -104,8 +125,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+
+
+    protected void queryPosts() {
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        query.setLimit(20);
+        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.findInBackground(new FindCallback<Post>() {
+            @Override
+            public void done(List<Post> posts, ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Issue with posts", e);
+                    return;
+                }
+                for (Post post : posts) {
+                    Log.i(TAG, "Post:  " + post.getDescription() + "User: " + post.getName()+ "Prix: " + post.getPrice());
+                 // stores1.getDescription().toString()
+                }
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        // setting grid layout manager to implement grid view.
+        // in this method '2' represents number of columns to be displayed in grid view.
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL,false);
+
+         rvPosts.setLayoutManager(layoutManager);
+        rvPosts.setAdapter(adapter);
+    }
+    //Search
+
+
 
         private ActionBarDrawerToggle setupDrawerToggle() {
             // NOTE: Make sure you pass in a valid toolbar reference.  ActionBarDrawToggle() does not require it
@@ -128,12 +181,12 @@ public class MainActivity extends AppCompatActivity {
                         for (Stores store : stores) {
                             if (e == null) {
                                 if (store.getStatus().equals(true)) {
-                                    showAlert("Seller ", "Welcome to your business" + store.getStatus());
+                                    showAlert("Seller ", "Welcome " + store.getName());
                                     Intent intent = new Intent(MainActivity.this, MyStores.class);
 
                                     startActivity(intent);
                                 } else {
-                                    showAlert("Seller", "Sorry");
+                                    showAlert("Seller", "Sorry" + store.getName());
 
                                 }
                             }
@@ -157,6 +210,16 @@ public class MainActivity extends AppCompatActivity {
             }
 
     private void showAlert(String title, String message) {
+        AlertDialog.Builder builder= new AlertDialog.Builder(MainActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Ok", (dialog, which) -> {
+                    dialog.cancel();
+                });
+                AlertDialog ok= builder.create();
+                ok.show();
+
+
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
