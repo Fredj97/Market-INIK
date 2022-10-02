@@ -14,7 +14,7 @@ the turnover of their company but do not have enough money to pay for services (
 In order to reach the top and/or become competitive. 
 Even if the targets are students, any supplier meeting our terms and conditions will be able to create a seller account.
 
-
+  
 ###App Evaluation
 [Evaluation of your app across the following attributes]
 
@@ -165,4 +165,4 @@ delete	Delete	Delete Content
 link of trello[https://trello.com/b/kc1Wl52B/market-inik-sept-2022]
 
 
-link of gif[https://imgur.com/6r12yIO]
+link of gif[[https://imgur.com/6r12yIO](https://imgur.com/ytLN8Vj)]
