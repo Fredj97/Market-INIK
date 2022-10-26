@@ -55,10 +55,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private ImageView ivImage;
         private TextView tvDescription;
         private TextView tvPrice;
-        private ImageView fav;
-        private ImageView comment;
-        private ImageView near;
-        private ImageView save;
+
 
 
         public ViewHolder(@NonNull View itemView) {

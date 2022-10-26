@@ -32,7 +32,7 @@
                 android:id="@+id/flContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#DAE1E3"
+                android:background="#ffffff"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
         </LinearLayout>
 
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:background="#A4A7A8"
+            android:background="#FFFFFF"
             app:headerLayout="@layout/drawer_header"
             app:menu="@menu/menu_item" />
 
@@ -56,18 +56,16 @@
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchBar"
                 style="@style/MaterialSearchBarLight"
-                android:layout_width="370dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="90dp"
-                android:background="@color/purple_500"
-                android:backgroundTint="#DAE1E3"
                 android:padding="0dp"
+                app:mt_searchBarColor="#F6F2F2"
+                app:mt_placeholderColor="@color/black"
                 app:mt_hint="Search your favorite product"
                 app:mt_maxSuggestionsCount="10"
-                app:mt_placeholder="Market INIK"
-                app:mt_roundedSearchBarEnabled="true"
-                app:mt_speechMode="true"
+                app:mt_placeholder="tell us what you want"
                 app:mt_textColor="@color/purple_200"
                 tools:ignore="MissingClass" />
 
@@ -79,35 +77,30 @@
         </RelativeLayout>
 
 
-        <LinearLayout
+
+
+
+        <TextView
+            android:id="@+id/Category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="200dp"
+            android:text="Categories"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
-            >
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="270dp"
-                android:src="@drawable/bijoux">
-
-            </ImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bijoux"
-                android:layout_marginStart="-55dp"
-                android:layout_marginTop="320dp"/>
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="50dp"
-                android:src="@drawable/shoes"
-                android:layout_marginTop="279dp"
-                android:layout_marginStart="20dp"
-                />
-        </LinearLayout>
-
-
+        <TextView
+            android:id="@+id/Mostviewed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="300dp"
+            android:text="Most viewed"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
 
 
 
@@ -117,9 +110,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="345dp"
+            android:layout_marginTop="460dp"
             android:text="Recently added"
             android:textSize="25dp"
+            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -129,11 +123,17 @@
             android:layout_marginTop="370dp"
             android:layout_height="match_parent">
 
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="300dp" />
+            </GridLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTweets"
                 android:layout_width="match_parent"
@@ -147,15 +147,27 @@
 
     </androidx.drawerlayout.widget.DrawerLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/page_title"
+            android:gravity="center"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+        android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:backgroundTint="#4DA2B8"
-        app:backgroundTint="#00BCD4"
+        app:backgroundTint="#ffffff"
+        app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu" />
 
 

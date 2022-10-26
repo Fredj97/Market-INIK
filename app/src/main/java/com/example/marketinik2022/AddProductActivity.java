@@ -209,7 +209,7 @@ public class AddProductActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e !=null){
                     Log.e(TAG, "Error while saving", e);
-                    Toast.makeText(AddProductActivity.this, "Erro while saving!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddProductActivity.this, "Error while saving!", Toast.LENGTH_SHORT).show();
                 }
                 Log.i(TAG, "Post save was successful!");
                 etDescription.setText("");

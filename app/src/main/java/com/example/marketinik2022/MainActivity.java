@@ -6,9 +6,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -43,9 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
     public BottomNavigationView bottomNavigationView;
-    private Switch switchid;
-    private TextView idcategory;
-    private ImageView cart;
     Toolbar toolbar;
     NavigationView nvDrawer;
     private DrawerLayout mDrawer;
@@ -75,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         queryPosts();
         //queryPosts1();
         // Initialize and assign variable
-// Set a Toolbar to replace the ActionBar.
+        // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -97,38 +91,40 @@ public class MainActivity extends AppCompatActivity {
         setupDrawerContent(nvDrawer);
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
-        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
         // Set Home selected
-        bottomNavigationView.setSelectedItemId(R.id.action_home);
+
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 switch (item.getItemId()) {
                     case R.id.action_favorite:
                         startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
                         overridePendingTransition(0, 0);
-                        return true;
+                       return true;
 
                     case R.id.action_home:
-                        return true;
-
+                      return true;
 
                     case R.id.action_profile:
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
+
+
+
                 }
-                return false;
+               return false;
             }
         });
 
+
     }
 
-
-
+    //query for the posts
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
@@ -153,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         // in this method '2' represents number of columns to be displayed in grid view.
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL,false);
 
-         rvPosts.setLayoutManager(layoutManager);
+        rvPosts.setLayoutManager(layoutManager);
         rvPosts.setAdapter(adapter);
     }
     //Search
@@ -174,19 +170,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onOptionsItemSelected(MenuItem item) {
             if (item.getItemId() == R.id.switchitem) {
                 ParseQuery<Stores> query = ParseQuery.getQuery(Stores.class);
-                query.include(Stores.KEY_STATUS);
+                query.include(Stores.KEY_USER);
                 query.findInBackground(new FindCallback<Stores>() {
                     @Override
                     public void done(List<Stores> stores, ParseException e) {
                         for (Stores store : stores) {
                             if (e == null) {
                                 if (store.getStatus().equals(true)) {
-                                    showAlert("Seller ", "Welcome " + store.getName());
+                                    showAlert("Seller ", "Welcome " + store.getStatus());
                                     Intent intent = new Intent(MainActivity.this, MyStores.class);
 
                                     startActivity(intent);
                                 } else {
-                                    showAlert("Seller", "Sorry" + store.getName());
+                                    showAlert("Seller", "Sorry" + store.getStatus());
 
                                 }
                             }

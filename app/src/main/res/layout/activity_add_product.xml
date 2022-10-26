@@ -14,58 +14,77 @@
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/teal_700"
         android:text="Add a product" />
+
     <ImageView
+        android:id="@+id/imgView"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_margin="20dp"
         android:layout_below="@id/takePic"
-        android:id="@+id/imgView"/>
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="262dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginBottom="75dp"
-        android:ems="10"
-        android:hint="Add a description"
-        android:visibility="gone"
-        />
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="20dp" />
+
+
 
 
 
     <ImageView
         android:id="@+id/ivPostImage"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="5dp"
         tools:srcCompact="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="wrap_content"
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="587dp"
-        android:layout_marginStart="130dp"
-        android:visibility="gone"
-        android:text="Post" />
-    <EditText
-        android:id="@+id/tvprice"
-        android:layout_width="262dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="550dp"
-        android:layout_marginBottom="75dp"
-        android:ems="10"
-        android:hint="Add a description"
-        android:visibility="gone"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginTop="210dp">
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="130dp"
+            android:layout_marginTop="587dp"
+            android:text="Post" />
 
 
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/tvprice"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="75dp"
+            android:ems="10"
+            android:hint="Add a description"
+
+            />
+        </View>
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="00dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="75dp"
+            android:ems="10"
+            android:hint="Add a description"
+
+            />
+
+    </androidx.cardview.widget.CardView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

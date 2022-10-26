@@ -64,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:drawableRight="@drawable/user"
-            android:hint="email" />
+            android:hint="username" />
 
         <EditText
             android:id="@+id/etPassword"

@@ -75,15 +75,6 @@ public class UsersActivity extends FragmentActivity implements OnMapReadyCallbac
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -267,7 +258,7 @@ public class UsersActivity extends FragmentActivity implements OnMapReadyCallbac
 
                     // finding and displaying the distance between the current user and the closest store to him
                     double distance = getCurrentUserLocation().distanceInKilometersTo(closestStore.getParseGeoPoint("Location"));
-                    alertDisplayer("We found the closest store from you!", "It's " + closestStore.getString("Name") + ". \n You are " + Math.round(distance * 100.0) / 100.0 + " km from this store.");
+                    alertDisplayer("Good, we find the closest store from you !", "It's " + closestStore.getString("Name") + ". \n You are " + Math.round(distance * 100.0) / 100.0 + " km from this store.");
 
                     // creating a marker in the map showing the closest store to the current user
                     LatLng closestStoreLocation = new LatLng(closestStore.getParseGeoPoint("Location").getLatitude(), closestStore.getParseGeoPoint("Location").getLongitude());

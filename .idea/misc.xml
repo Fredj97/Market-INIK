@@ -16,7 +16,7 @@
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_detail.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_favorite.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_login.xml" value="0.18" />
-        <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_menu.xml" value="0.19248826291079812" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_menu_store.xml" value="0.22" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_menu_users.xml" value="0.25" />
@@ -24,9 +24,11 @@
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_settings.xml" value="0.21" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/activity_users.xml" value="0.22083333333333333" />
+        <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/checkbox.xml" value="0.2234375" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/drawer_header.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/fragment_first.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/fragment_posts.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/fragment_second.xml" value="0.22395833333333334" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/image_slider_layout_item.xml" value="0.2234375" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/item_categories.xml" value="0.33" />
         <entry key="..\:/Users/Owner/AndroidStudioProjects/MarketINIK2022/app/src/main/res/layout/item_post.xml" value="0.33" />

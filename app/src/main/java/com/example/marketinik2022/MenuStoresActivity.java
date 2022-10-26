@@ -16,6 +16,7 @@ public class MenuStoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu_store);
 
 
+        //Find all the stores
         final Button all_stores_button = findViewById(R.id.button_all_stores);
         all_stores_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +31,7 @@ public class MenuStoresActivity extends AppCompatActivity {
             }
         });
 
+        //Find all the closest store from a user
         final Button button_closest_store = findViewById(R.id.button_closest_store);
         button_closest_store.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,16 +46,18 @@ public class MenuStoresActivity extends AppCompatActivity {
             }
         });
 
+        //Return to MenuStoresActivity
         final Button back_button = findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alertDisplayer("Please, wait a moment.", "Returning to menu...");
+                alertDisplayer("Attention!!!", "Click ok to return to menu...");
             }
         });
 
     }
 
+    //Set method alertDisplayer
     private void alertDisplayer(String title,String message){
         AlertDialog.Builder builder = new AlertDialog.Builder(MenuStoresActivity.this)
                 .setTitle(title)

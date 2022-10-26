@@ -1,3 +1,4 @@
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -5,13 +6,15 @@ pluginManagement {
         mavenCentral()
     }
 }
+buildscript {
+    repositories { jcenter() }}
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         maven { url "https://jitpack.io" }
         google()
         mavenCentral()
-        maven { url "https://jitpack.io" }
+       jcenter()
     }
 }
 rootProject.name = "Market INIK 2022"

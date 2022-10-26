@@ -36,7 +36,6 @@ public class MyStores extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_compose:
                         startActivity(new Intent(getApplicationContext(), AddProductActivity.class));
-                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.action_home:
                         return true;
