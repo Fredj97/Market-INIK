@@ -34,6 +34,8 @@
                 android:layout_height="match_parent"
                 android:background="#ffffff"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
         </LinearLayout>
 
 
@@ -42,7 +44,7 @@
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/nvView"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#FFFFFF"
             app:headerLayout="@layout/drawer_header"
@@ -53,6 +55,37 @@
             android:layout_height="match_parent">
 
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchBar"
+                app:cardCornerRadius="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categories"
+                    android:id="@+id/txtcategory"
+                    android:textSize="25dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categoriesList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/productList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"/>
+
+            </androidx.cardview.widget.CardView>
+
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchBar"
                 style="@style/MaterialSearchBarLight"
@@ -61,60 +94,17 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="90dp"
                 android:padding="0dp"
-                app:mt_searchBarColor="#F6F2F2"
-                app:mt_placeholderColor="@color/black"
                 app:mt_hint="Search your favorite product"
                 app:mt_maxSuggestionsCount="10"
                 app:mt_placeholder="tell us what you want"
+                app:mt_placeholderColor="@color/black"
+                app:mt_searchBarColor="#F6F2F2"
                 app:mt_textColor="@color/purple_200"
                 tools:ignore="MissingClass" />
 
 
-
-
-
-
         </RelativeLayout>
 
-
-
-
-
-        <TextView
-            android:id="@+id/Category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="200dp"
-            android:text="Categories"
-            android:textSize="25dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/Mostviewed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="300dp"
-            android:text="Most viewed"
-            android:textSize="25dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-
-
-
-        <TextView
-            android:id="@+id/productspostid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="460dp"
-            android:text="Recently added"
-            android:textSize="25dp"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeContainer"
@@ -132,7 +122,7 @@
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="300dp" />
+            android:layout_marginTop="0dp" />
             </GridLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTweets"
