@@ -15,6 +15,7 @@ import com.parse.ParseUser;
         public static final String KEY_CREATED_KEY= "createdAt";
         public static final String KEY_NAME= "Name";
         public static final String KEY_PRICE= "prix";
+
         public static ParseObject post;
 
         public String getDescription(){

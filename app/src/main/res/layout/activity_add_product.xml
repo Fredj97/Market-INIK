@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -22,10 +23,6 @@
         android:layout_below="@id/takePic"
         android:layout_marginTop="150dp"
         android:layout_marginBottom="20dp" />
-
-
-
-
 
     <ImageView
         android:id="@+id/ivPostImage"
@@ -57,30 +54,51 @@
             android:text="Post" />
 
 
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/tvprice"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="75dp"
             android:ems="10"
-            android:hint="Add a description"
+            android:hint="Ajoute pri pwodui a"
 
             />
-        </View>
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_marginStart="00dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="80dp"
             android:layout_marginBottom="75dp"
             android:ems="10"
-            android:hint="Add a description"
+            android:hint="Bay deskripsyon pwodui a"
+
+            />
+
+        <EditText
+            android:id="@+id/order"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="00dp"
+            android:layout_marginTop="140dp"
+            android:layout_marginBottom="75dp"
+            android:ems="10"
+            android:hint="Kantie"
+
+            />
+
+        <EditText
+            android:id="@+id/nom"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginStart="00dp"
+            android:layout_marginTop="200dp"
+            android:layout_marginBottom="75dp"
+            android:ems="10"
+            android:hint="Ajoute non pwodui a"
 
             />
 

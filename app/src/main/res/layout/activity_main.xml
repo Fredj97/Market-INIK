@@ -32,7 +32,7 @@
                 android:id="@+id/flContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#ffffff"
+                android:background="#EFEBEB"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
@@ -55,11 +55,7 @@
             android:layout_height="match_parent">
 
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/searchBar"
-                app:cardCornerRadius="10dp">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -67,24 +63,22 @@
                     android:text="Categories"
                     android:id="@+id/txtcategory"
                     android:textSize="25dp"
+                    android:layout_marginTop="200dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Recently added"
+                    android:id="@+id/recentProducts"
+                    android:textSize="25dp"
+                    android:layout_marginTop="300dp"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
 
 
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/categoriesList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/productList"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"/>
-
-            </androidx.cardview.widget.CardView>
 
             <com.mancj.materialsearchbar.MaterialSearchBar
                 android:id="@+id/searchBar"
@@ -98,7 +92,7 @@
                 app:mt_maxSuggestionsCount="10"
                 app:mt_placeholder="tell us what you want"
                 app:mt_placeholderColor="@color/black"
-                app:mt_searchBarColor="#F6F2F2"
+                app:mt_searchBarColor="#ffffff"
                 app:mt_textColor="@color/purple_200"
                 tools:ignore="MissingClass" />
 
@@ -113,17 +107,14 @@
             android:layout_marginTop="370dp"
             android:layout_height="match_parent">
 
-            <GridLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp" />
-            </GridLayout>
+            android:layout_marginTop="-100dp" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvTweets"
                 android:layout_width="match_parent"

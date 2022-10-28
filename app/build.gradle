@@ -9,6 +9,10 @@ android {
         viewBinding true
 }
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.example.marketinik2022"
         minSdk 21
@@ -55,6 +59,12 @@ dependencies {
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
-
+    //Volley implementation
+    implementation 'com.android.volley:volley:1.2.1'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
 }
+
+
+
+
