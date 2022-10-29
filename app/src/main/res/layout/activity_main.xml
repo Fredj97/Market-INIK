@@ -88,20 +88,14 @@
 
 
 
-            <com.mancj.materialsearchbar.MaterialSearchBar
-                android:id="@+id/searchBar"
-                style="@style/MaterialSearchBarLight"
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="90dp"
-                android:padding="0dp"
-                app:mt_hint="Search your favorite product"
-                app:mt_maxSuggestionsCount="10"
-                app:mt_placeholder="tell us what you want"
-                app:mt_searchBarColor="#ffffff"
-                app:mt_textColor="@color/purple_200"
-                tools:ignore="MissingClass" />
+                app:queryHint="search a product"
+
+                 />
 
 
         </RelativeLayout>
