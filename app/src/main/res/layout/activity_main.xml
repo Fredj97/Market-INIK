@@ -64,8 +64,17 @@
                     android:id="@+id/txtcategory"
                     android:textSize="25dp"
                     android:layout_marginTop="200dp"
-                    android:textColor="@color/black"
+
                     android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most Liked"
+                android:id="@+id/mostliked"
+                android:textSize="25dp"
+                android:layout_marginTop="370dp"
+                android:textStyle="bold"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,8 +82,7 @@
                     android:text="Recently added"
                     android:id="@+id/recentProducts"
                     android:textSize="25dp"
-                    android:layout_marginTop="300dp"
-                    android:textColor="@color/black"
+                    android:layout_marginTop="570dp"
                     android:textStyle="bold"/>
 
 
@@ -91,7 +99,6 @@
                 app:mt_hint="Search your favorite product"
                 app:mt_maxSuggestionsCount="10"
                 app:mt_placeholder="tell us what you want"
-                app:mt_placeholderColor="@color/black"
                 app:mt_searchBarColor="#ffffff"
                 app:mt_textColor="@color/purple_200"
                 tools:ignore="MissingClass" />
@@ -100,12 +107,7 @@
         </RelativeLayout>
 
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeContainer"
-            android:layout_below="@+id/rvcategory"
-            android:layout_width="match_parent"
-            android:layout_marginTop="370dp"
-            android:layout_height="match_parent">
+
 
 
 
@@ -113,17 +115,18 @@
             android:id="@+id/rvPosts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-100dp" />
+            android:layout_marginTop="595dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTweets"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clipToPadding="false"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvLikes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="400dp" />
 
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+
 
 
     </androidx.drawerlayout.widget.DrawerLayout>
@@ -147,7 +150,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:backgroundTint="#ffffff"
+        app:backgroundTint="#F44336"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu" />
 

@@ -15,8 +15,22 @@ import com.parse.ParseUser;
         public static final String KEY_CREATED_KEY= "createdAt";
         public static final String KEY_NAME= "Name";
         public static final String KEY_PRICE= "prix";
+        public static final String KEY_LIKES= "likes";
+
 
         public static ParseObject post;
+
+
+
+
+
+        public double getLikes() {
+            return getDouble(KEY_LIKES);
+        }
+
+        public void setKeyLikes(double likes){
+            put(KEY_LIKES,likes);
+        }
 
         public String getDescription(){
 
