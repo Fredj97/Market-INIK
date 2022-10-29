@@ -6,6 +6,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,19 +22,24 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.marketinik2022.Adapters.CategoryAdapter;
 import com.example.marketinik2022.Adapters.PostAdapter;
+import com.example.marketinik2022.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.slider.Slider;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Category;
 import Models.Post;
+import Models.Product;
 import Models.Stores;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,30 +52,47 @@ public class MainActivity extends AppCompatActivity {
     NavigationView nvDrawer;
     private DrawerLayout mDrawer;
     private ActionBarDrawerToggle drawerToggle;
-    //private FragmentTransaction fragmentTransaction;
     private View recyclerView;
     Slider imageList;
     private RecyclerView rvPosts;
+    private RecyclerView rvLikes;
     protected PostAdapter adapter;
     protected List<Post> allPosts;
     Boolean mFirstLoad;
     private MaterialSearchBar searchBar;
+    private SearchView searchView;
+
+
+    ActivityMainBinding binding;
+    CategoryAdapter categoryAdapter;
+    ArrayList<Post> posts;
+    ArrayAdapter<Post> postArrayAdapter;
+
+
+    ArrayList<Category> categories;
+    ParseQuery query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //  binding= ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_main);
 
+        // initCategories();
+        //0  initProducts();
 
-        searchBar=findViewById(R.id.searchBar);
+
+        searchView = findViewById(R.id.searchView);
         rvPosts = findViewById(R.id.rvPosts);
         allPosts = new ArrayList<>();
         adapter = new PostAdapter(MainActivity.this, allPosts);
-        mFirstLoad=true;
+        mFirstLoad = true;
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        rvLikes = findViewById(R.id.rvLikes);
+        queryLikes();
         queryPosts();
-        //queryPosts1();
+
         // Initialize and assign variable
         // Set a Toolbar to replace the ActionBar.
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -92,9 +117,8 @@ public class MainActivity extends AppCompatActivity {
         // Tie DrawerLayout events to the ActionBarToggle
         mDrawer.addDrawerListener(drawerToggle);
 
-        BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         // Set Home selected
-
 
         // Perform item selected listener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -124,12 +148,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void queryLikes() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Post");
+        query.whereLessThan("likes", 50);
+        query.findInBackground((objects, e) -> {
+            if(e == null){
+                for (ParseObject result : objects) {
+                    Log.d("Object found ",result.getObjectId());
+                }
+            }else{
+                Toast.makeText(this, "Error: "+e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+
+
     //query for the posts
     protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);
-        query.addDescendingOrder(Post.KEY_CREATED_KEY);
+        query.addDescendingOrder(Product.KEY_CREATED_KEY);
         query.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
@@ -138,8 +178,25 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
                 for (Post post : posts) {
-                    Log.i(TAG, "Post:  " + post.getDescription() + "User: " + post.getName()+ "Prix: " + post.getPrice());
-                 // stores1.getDescription().toString()
+                    Log.i(TAG, "Post:  " + post.getDescription() + "User: " + post.getName()+ "Prix: " + post.getPrice());                    post.getDescription().toString();
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String description) {
+                        if (posts.contains(description)) {
+                            adapter.getFilter().filter(query);
+                        } else {
+                            Toast.makeText(MainActivity.this, "ddfgf", Toast.LENGTH_SHORT).show();
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String description) {
+                        adapter.getFilter().filter(query);
+                        return false;
+                    }
+                });
+
                 }
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
@@ -147,12 +204,13 @@ public class MainActivity extends AppCompatActivity {
         });
         // setting grid layout manager to implement grid view.
         // in this method '2' represents number of columns to be displayed in grid view.
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL,false);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL,false);
 
         rvPosts.setLayoutManager(layoutManager);
         rvPosts.setAdapter(adapter);
     }
-    //Search
+
+
 
 
 
@@ -174,15 +232,15 @@ public class MainActivity extends AppCompatActivity {
                 query.findInBackground(new FindCallback<Stores>() {
                     @Override
                     public void done(List<Stores> stores, ParseException e) {
-                        for (Stores store : stores) {
+                        for (Stores user : stores) {
                             if (e == null) {
-                                if (store.getStatus().equals(true)) {
-                                    showAlert("Seller ", "Welcome " + store.getStatus());
+                                if (user.getStatus().equals(true)) {
+                                    showAlert("Seller ", "Welcome " + user.getStatus());
                                     Intent intent = new Intent(MainActivity.this, MyStores.class);
 
                                     startActivity(intent);
                                 } else {
-                                    showAlert("Seller", "Sorry" + store.getStatus());
+                                    showAlert("Seller", "Sorry" + user.getStatus());
 
                                 }
                             }
@@ -263,5 +321,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // ...
+
+  //  void initCategories(){
+
+    //}
+    //void initProducts(){
+    //    products= new ArrayList<>();
+     //   products.add(new Product(""))
+//
+     //   productAdapter= new ProductAdapter(this, products);
+       // GridLayoutManager layoutManager= new GridLayoutManager(this, 2);
+      //  binding.rvPosts.setAdapter(productAdapter);
+    //}
 }
 

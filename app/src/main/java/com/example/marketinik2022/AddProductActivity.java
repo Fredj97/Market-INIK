@@ -34,7 +34,7 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 
-import Models.Post;
+import Models.Product;
 
 public class AddProductActivity extends AppCompatActivity {
     public BottomNavigationView bottomNavigationView;
@@ -44,6 +44,8 @@ public class AddProductActivity extends AppCompatActivity {
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     private EditText etDescription;
     private EditText tvPrice;
+    private EditText order;
+    private EditText nom;
     private ImageView btnCaptureImage;
     private ImageView ivPostImage;
     private Button btnSubmit;
@@ -52,7 +54,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     private File photoFile;
     private String photoFileName = "photo.jpg";
-    private Post post;
+    private Product product;
 
     public void showAlertDialogButtonClicked(View view ) {
 
@@ -91,6 +93,8 @@ public class AddProductActivity extends AppCompatActivity {
         btnSubmit = findViewById(R.id.btnSubmit);
         imgView = findViewById(R.id.imgView);
         tvPrice = findViewById(R.id.tvprice);
+        order = findViewById(R.id.order);
+        nom = findViewById(R.id.nom);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         // Set Home selected
@@ -116,6 +120,8 @@ public class AddProductActivity extends AppCompatActivity {
                 if (imgView != null) {
                     etDescription.setVisibility(View.VISIBLE);
                     tvPrice.setVisibility(View.VISIBLE);
+                    order.setVisibility(View.VISIBLE);
+                    nom.setVisibility(View.VISIBLE);
                     btnSubmit.setVisibility(View.VISIBLE);
                 }
             }
@@ -125,6 +131,8 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String Description = etDescription.getText().toString();
                 String Price= tvPrice.getText().toString();
+                String Order= order.getText().toString();
+                String Nom= nom.getText().toString();
                 if (Description.isEmpty()) {
                     Toast.makeText(AddProductActivity.this, "Description cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
@@ -133,12 +141,20 @@ public class AddProductActivity extends AppCompatActivity {
                     Toast.makeText(AddProductActivity.this, "Price cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (Order.isEmpty()){
+                    Toast.makeText(AddProductActivity.this, "Order cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (Nom.isEmpty()){
+                    Toast.makeText(AddProductActivity.this, "Nom cannot be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (photoFile == null || imgView.getDrawable() == null) {
                     Toast.makeText(AddProductActivity.this, "There is no image!", Toast.LENGTH_SHORT).show();
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                savePost(Description, currentUser, photoFile, Price);
+                saveProduct(Description, currentUser, photoFile, Price, Nom, Order);
             }
         });
     }
@@ -198,10 +214,11 @@ public class AddProductActivity extends AppCompatActivity {
 
 
 
-    private void savePost(String Description, ParseUser currentUser, File photoFile, String Prix) {
-        Post post= new Post();
+    private void saveProduct(String Description, ParseUser currentUser, File photoFile, String Prix, String Order, String Nom) {
+        Product post= new Product();
         post.setDescription(Description);
         post.setPrice(Prix);
+        post.setOrder(Order);
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         post.saveInBackground(new SaveCallback() {

@@ -13,11 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.marketinik2022.MainActivity;
+import com.example.marketinik2022.ProductDetail;
 import com.example.marketinik2022.R;
 import com.parse.ParseFile;
 
 import java.util.List;
+import java.util.Locale;
 
 import Models.Post;
 
@@ -50,6 +51,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         return posts.size();
     }
 
+    public Locale getFilter() {
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvUsername;
         private ImageView ivImage;
@@ -71,10 +75,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         public void bind(Post post) {
             //Bind the data to the view elements
             tvDescription.setText(post.getDescription());
-            tvPrice.setText(post.getPrice());
+            tvPrice.setText(post.getPrice()+"Goud");
             try {
 
-                tvUsername.setText(post.getString().getUsername());
+                tvUsername.setText("Non vandè:"+ post.getString().getUsername());
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -88,7 +92,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
       itemView.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              Intent intent= new Intent(context, MainActivity.class);
+              Intent intent= new Intent(context, ProductDetail.class);
+              intent.putExtra("name", post.getName());
+              intent.putExtra("description", post.getDescription());
+              intent.putExtra("image", post.getImage());
+              intent.putExtra("price", post.getPrice());
+
 
               context.startActivity(intent);
           }
